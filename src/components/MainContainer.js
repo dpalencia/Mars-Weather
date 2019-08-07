@@ -1,8 +1,13 @@
 import React from "react"
-
+import WContainer from "./WeatherBoxes/WContainer"
 function MainContainer() {
     return (
-        `Main Container`
+        <div id="mainContainer">
+            <div id="mainTitle">
+                <h1>7/20/19 - Sol 233</h1>
+            </div>
+            <WContainer />
+        </div>
     )
 }
 

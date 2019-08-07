@@ -5,7 +5,7 @@ import TitleLocation from "./TitleLocation"
 function TitleBar() {
     return (
         <div id="titleBar">
-            <TitleMain id="titleMain" title="Weather" />
+            <TitleMain id="titleMain" title="WEATHER" />
             <TitleLocation id="titleLocation" planet="Mars, Sol" location="Elysium Planitia" />
         </div>
     )

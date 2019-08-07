@@ -4,15 +4,47 @@ body {
   font-family: helvetica;
 }
 
+/* Reset headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 45pt;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 30pt;
+}
+
+h3 {
+  font-size: 25pt;
+}
+
+body {
+  background: url('./img/bg.png');
+  background-size: cover; 
+  background-repeat: no-repeat;
+}
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 #titleBar {
   display: flex;
   background-color: #E7B092;
-  max-width: 1200px;
-  margin: 0 auto;
   align-items: center;
   padding: 20px 40px;
   color: #40152A;
   font-weight: bold;
+  flex-basis: 100pt;
 }
     #titleMain, #titleLocation {
       flex-grow: 1;
@@ -23,3 +55,28 @@ body {
       font-size: 30px;
     }
 
+@media (max-width: 1200px) {
+  
+}
+
+#mainContainer {
+  background-color: rgba(36, 23, 33, 0.4);
+  flex-grow: 1;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+#mainTitle {
+  text-align: center;
+}
+
+#weatherBox {
+  background-color: rgba(36, 23, 33, .4);
+}
+
+.titleBar {
+  background-color: #E7B092;
+  color: #40152A;
+}
