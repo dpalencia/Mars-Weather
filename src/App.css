@@ -1,3 +1,5 @@
+/***** Style Resets */
+
 body {
   margin: 0;
   padding: 0;
@@ -10,6 +12,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
+
+/***** Heading Styles */
 h1 {
   font-size: 45pt;
   font-weight: 300;
@@ -29,6 +33,8 @@ body {
   background-repeat: no-repeat;
 }
 
+
+/***** App */
 .App {
   max-width: 1200px;
   margin: 0 auto;
@@ -37,6 +43,7 @@ body {
   height: 100vh;
 }
 
+/***** Main Title Bar Styles */
 #titleBar {
   display: flex;
   background-color: #E7B092;
@@ -59,6 +66,7 @@ body {
   
 }
 
+/***** Main Container Styles */
 #mainContainer {
   background-color: rgba(36, 23, 33, 0.4);
   flex-grow: 1;
@@ -68,15 +76,26 @@ body {
   flex-direction: column;
 }
 
-#mainTitle {
-  text-align: center;
-}
+    #mainTitle {
+      text-align: center;
+    }
+    .titleBar {
+      background-color: #E7B092;
+      color: #40152A;
+    }
 
-#weatherBox {
-  background-color: rgba(36, 23, 33, .4);
-}
+    #wGrid {
+      display: grid;
+      grid-template-rows: 165pt 227pt;
+      grid-template-columns: 10% 5fr 7fr 10%;
+      grid-template-areas:
+        ". temp pressure . "
+        ". temp weather .";
+      grid-column-gap: 10pt;
+      grid-row-gap: 10pt;
+      justify-content: center;
+    }
 
-.titleBar {
-  background-color: #E7B092;
-  color: #40152A;
-}
+    #weatherBox {
+      background-color: rgba(36, 23, 33, .4);
+    }
