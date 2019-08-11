@@ -1,11 +1,19 @@
 import React from "react"
 import WeatherBox from "./WeatherBox"
+import InfoValues from "./InfoValues"
 
 function WeatherBoxes() {
     return (
         <div id="wGrid">
             <WeatherBox title="Temperature" gridName="temp">
-                    Some Content
+                <InfoValues
+                  maxName="Max"
+                  minName="Min" 
+                  avName="Average" 
+                  maxVal={20}
+                  minVal={25}
+                  avVal={30}
+                />
             </WeatherBox>
             <WeatherBox title="Pressure" gridName="pressure">
                     Some more content
