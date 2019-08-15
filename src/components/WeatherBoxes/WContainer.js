@@ -7,6 +7,18 @@ function WeatherBoxes(props) {
     /* Defining these vars to make later data access easier */
     let jsonTemp = props.weatherVals[props.day].AT
     let jsonWind = props.weatherVals[props.day].HWS
+    let windData = jsonWind ? [
+        jsonWind.mx,
+        jsonWind.mn,
+        jsonWind.av
+    ] : null
+    let windFuncs = jsonWind ? {
+        mph: () => windData.map((num) => Math.round(num * 2.237)),
+        ["m/s"]: () => windData.map(num => Math.round(num)) // Miles/hour -> Meters/second conversion
+    } : null
+    const [windUnit, setWindUnit] = useState(jsonWind ? "m/s" : null)
+    const [wind, setWind] = useState(jsonWind ? windFuncs["m/s"]() : null)
+
     let jsonPressure = props.weatherVals[props.day].PRE
 
     let tempData = [
@@ -14,11 +26,7 @@ function WeatherBoxes(props) {
         jsonTemp.mn,
         jsonTemp.av
     ]
-    let windData = [
-        jsonWind.mx,
-        jsonWind.mn,
-        jsonWind.av
-    ]
+
 
     let pressureData = [
         jsonPressure.mx,
@@ -32,15 +40,11 @@ function WeatherBoxes(props) {
         K: () => tempData.map((num) => Math.round(num + 273.15)) // C -> K conversion
     }
 
-    let windFuncs = {
-        mph: () => windData.map((num) => Math.round(num * 2.237)),
-        ["m/s"]: () => windData.map(num => Math.round(num)) // Miles/hour -> Meters/second conversion
-    }
+
 
     const [temp, setTemp] = useState(tempFuncs.C())
     const [tempUnit, setTempUnit] = useState("C")
-    const [windUnit, setWindUnit] = useState("m/s")
-    const [wind, setWind] = useState(windFuncs["m/s"]())
+
 
     // Don't need to manage state for pressure, so we can just make it a regular variable
     let pressure = pressureData.map(num => Math.round(num))
@@ -93,25 +97,32 @@ function WeatherBoxes(props) {
             </WeatherBox>
 
             <WeatherBox title="Wind Speed" gridName="weather">
-                <InfoValues
-                    maxName="Max"
-                    minName="Min"
-                    avName="Average"
-                    maxVal={wind[0]}
-                    minVal={wind[1]}
-                    avVal={wind[2]}   
-                    unit={windUnit} 
-                />
-                <UnitButton 
-                    text="mph" 
-                    handler={windHandler}
-                    currentUnit={windUnit}
-                />
-                <UnitButton 
-                    text="m/s" 
-                    handler={windHandler}
-                    currentUnit={windUnit}
-                />
+            {jsonWind ? 
+                <div>
+                    <InfoValues
+                        maxName="Max"
+                        minName="Min"
+                        avName="Average"
+                        maxVal={wind[0]}
+                        minVal={wind[1]}
+                        avVal={wind[2]}   
+                        unit={windUnit} 
+                    />
+                    <UnitButton 
+                        text="mph" 
+                        handler={windHandler}
+                        currentUnit={windUnit}
+                    />
+                    <UnitButton 
+                        text="m/s" 
+                        handler={windHandler}
+                        currentUnit={windUnit}
+                    />
+                </div>               
+                :
+                <h3>No wind data!</h3>
+            }
+
             </WeatherBox>
 
          </div>
