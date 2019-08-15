@@ -18,8 +18,12 @@ function WeatherBoxes(props) {
             ["m/s"]: () => windData.map(num => Math.round(num)) // Miles/hour -> Meters/second conversion
         }
     }
-    const [windUnit, setWindUnit] = useState(jsonWind ? "m/s" : null)
+    const [windUnit, setWindUnit] = useState(jsonWind ? "m/s" : "")
     const [wind, setWind] = useState(jsonWind ? windFuncs["m/s"]() : [null, null, null])
+
+    let windDirection = props.weatherVals[props.day].WD.most_common 
+    ? props.weatherVals[props.day].WD.most_common  : null
+
 
     let jsonPressure = props.weatherVals[props.day].PRE
     let pressureData = null;
@@ -32,9 +36,6 @@ function WeatherBoxes(props) {
         ]
         pressure = pressureData.map(num => Math.round(num))
     }
-
-    let windDirection = props.weatherVals[props.day].WD.most_common 
-        ? props.weatherVals[props.day].WD.most_common  : null
 
     // Don't need to manage state for pressure, so we can just make it a regular variable
     let jsonTemp = props.weatherVals[props.day].AT
@@ -99,7 +100,7 @@ function WeatherBoxes(props) {
                 />
             </WeatherBox>
 
-            <WeatherBox title="Wind" gridName="weather" status={jsonWind}>
+            <WeatherBox title="Wind" gridName="weather" status={jsonWind && windDirection}>
                     <InfoValues
                         maxName="Max"
                         minName="Min"
@@ -109,7 +110,6 @@ function WeatherBoxes(props) {
                         avVal={wind[2]}   
                         unit={windUnit} 
                     />
-                    <WindDirection commonDirection={windDirection} />
                     <UnitButton 
                         text="mph" 
                         handler={windHandler}
@@ -119,7 +119,8 @@ function WeatherBoxes(props) {
                         text="m/s" 
                         handler={windHandler}
                         currentUnit={windUnit}
-                    />           
+                    /> 
+                    <WindDirection commonDirection={windDirection} />
             </WeatherBox>
 
          </div>

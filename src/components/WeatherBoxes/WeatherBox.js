@@ -5,8 +5,8 @@ function NoData() {
     return (
         <div className="noData">
             <div>
-                <h3>No data!</h3>
-                <p>Tell InSight to get on it.</p>
+                <h3>Missing data!</h3>
+                <p>Tell NASA to get on it.</p>
             </div>
         </div>
     )
