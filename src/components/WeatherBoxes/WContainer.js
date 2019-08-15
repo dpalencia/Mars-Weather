@@ -2,52 +2,57 @@ import React, {useState} from "react"
 import WeatherBox from "./WeatherBox"
 import InfoValues from "./InfoValues"
 import UnitButton from "../UnitButton"
-
+import WindDirection from "./WindDirection"
 function WeatherBoxes(props) {
     /* Defining these vars to make later data access easier */
-    let jsonTemp = props.weatherVals[props.day].AT
+    let windData, windFuncs = null
     let jsonWind = props.weatherVals[props.day].HWS
-    let windData = jsonWind ? [
-        jsonWind.mx,
-        jsonWind.mn,
-        jsonWind.av
-    ] : null
-    let windFuncs = jsonWind ? {
-        mph: () => windData.map((num) => Math.round(num * 2.237)),
-        ["m/s"]: () => windData.map(num => Math.round(num)) // Miles/hour -> Meters/second conversion
-    } : null
+    if(jsonWind) {
+        windData = [
+            jsonWind.mx,
+            jsonWind.mn,
+            jsonWind.av
+        ]
+        windFuncs = {
+            mph: () => windData.map((num) => Math.round(num * 2.237)),
+            ["m/s"]: () => windData.map(num => Math.round(num)) // Miles/hour -> Meters/second conversion
+        }
+    }
     const [windUnit, setWindUnit] = useState(jsonWind ? "m/s" : null)
-    const [wind, setWind] = useState(jsonWind ? windFuncs["m/s"]() : null)
+    const [wind, setWind] = useState(jsonWind ? windFuncs["m/s"]() : [null, null, null])
 
     let jsonPressure = props.weatherVals[props.day].PRE
-
-    let tempData = [
-        jsonTemp.mx,
-        jsonTemp.mn,
-        jsonTemp.av
-    ]
-
-
-    let pressureData = [
-        jsonPressure.mx,
-        jsonPressure.mn,
-        jsonPressure.av
-    ]
-
-    let tempFuncs = {
-        C: () => tempData.map((num) => Math.round(num)),
-        F: () => tempData.map((num) => Math.round(num * 1.8 + 32)), // C -> F conversion 
-        K: () => tempData.map((num) => Math.round(num + 273.15)) // C -> K conversion
+    let pressureData = null;
+    let pressure = [null, null, null]
+    if(jsonPressure) {
+        pressureData = [
+            jsonPressure.mx,
+            jsonPressure.mn,
+            jsonPressure.av
+        ]
+        pressure = pressureData.map(num => Math.round(num))
     }
 
-
-
-    const [temp, setTemp] = useState(tempFuncs.C())
-    const [tempUnit, setTempUnit] = useState("C")
-
+    let windDirection = props.weatherVals[props.day].WD.most_common 
+        ? props.weatherVals[props.day].WD.most_common  : null
 
     // Don't need to manage state for pressure, so we can just make it a regular variable
-    let pressure = pressureData.map(num => Math.round(num))
+    let jsonTemp = props.weatherVals[props.day].AT
+    let tempData, tempFuncs = null
+    if(jsonTemp) {
+        tempData = [
+            jsonTemp.mx,
+            jsonTemp.mn,
+            jsonTemp.av
+        ]
+        tempFuncs = {
+            C: () => tempData.map((num) => Math.round(num)),
+            F: () => tempData.map((num) => Math.round(num * 1.8 + 32)), // C -> F conversion 
+            K: () => tempData.map((num) => Math.round(num + 273.15)) // C -> K conversion
+        }
+    }
+    const [temp, setTemp] = useState(jsonTemp ? tempFuncs.C() : [null, null, null])
+    const [tempUnit, setTempUnit] = useState(jsonTemp ? "C" : null)
 
     function tempHandler(e) {
         e.persist()
@@ -64,9 +69,7 @@ function WeatherBoxes(props) {
 
     return (
         <div id="wGrid">
-
-            <WeatherBox title="Temperature" gridName="temp">
-
+            <WeatherBox title="Temperature" gridName="temp" status={jsonTemp}>
                 <InfoValues
                   maxName="High"
                   minName="Low" 
@@ -84,7 +87,7 @@ function WeatherBoxes(props) {
             </div>
             </WeatherBox>
 
-            <WeatherBox title="Pressure" gridName="pressure">
+            <WeatherBox title="Pressure" gridName="pressure" status={jsonPressure}>
                 <InfoValues
                     maxName="Max"
                     minName="Min"
@@ -96,9 +99,7 @@ function WeatherBoxes(props) {
                 />
             </WeatherBox>
 
-            <WeatherBox title="Wind Speed" gridName="weather">
-            {jsonWind ? 
-                <div>
+            <WeatherBox title="Wind" gridName="weather" status={jsonWind}>
                     <InfoValues
                         maxName="Max"
                         minName="Min"
@@ -108,6 +109,7 @@ function WeatherBoxes(props) {
                         avVal={wind[2]}   
                         unit={windUnit} 
                     />
+                    <WindDirection commonDirection={windDirection} />
                     <UnitButton 
                         text="mph" 
                         handler={windHandler}
@@ -117,12 +119,7 @@ function WeatherBoxes(props) {
                         text="m/s" 
                         handler={windHandler}
                         currentUnit={windUnit}
-                    />
-                </div>               
-                :
-                <h3>No wind data!</h3>
-            }
-
+                    />           
             </WeatherBox>
 
          </div>
