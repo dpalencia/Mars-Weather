@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from "react"
 import WContainer from "./WeatherBoxes/WContainer"
 import DateBtn from "./DateBtn"
-
-
-
 function MainContainer() {
-
     const [weatherData, setWeatherData] = useState(null)
     const [currentDay, setCurrentDay] = useState(null);
     const [solArr, setSolArr] = useState([])
+    let dateObj = currentDay ? new Date(weatherData[currentDay].Last_UTC) : null
+
     function dayHandler(e) {
         setCurrentDay(e.target.value)
     }
@@ -26,11 +24,12 @@ function MainContainer() {
             setSolArr(json.sol_keys.map(sol => <DateBtn value={sol} handler={dayHandler} key={sol} />))
         })
     }, []);
- 
+
     return (
         <div id="mainContainer">
             <div id="mainTitle">
-                <h1>7/20/19 - Sol 233</h1>
+                <h1>{dateObj ? `${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getFullYear()} - Sol ${currentDay}`
+                 : "Loading..."}</h1>
             </div>
             {weatherData && currentDay ? 
                 <WContainer weatherVals={weatherData} day={currentDay} /> : 

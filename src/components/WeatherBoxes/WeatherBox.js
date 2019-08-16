@@ -16,7 +16,9 @@ function WeatherBox(props) {
     return (
         <div className="weatherBox" style={{gridArea: props.gridName}}>
             <WeatherTitle title={props.title} />
-            {props.status ? props.children : <NoData />}
+            <div className="weatherBoxInner">
+                {props.status ? props.children : <NoData />}
+            </div>
         </div>
     );
 }

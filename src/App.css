@@ -25,6 +25,7 @@ h2 {
 
 h3 {
   font-size: 25pt;
+  font-weight: 400;
 }
 
 body {
@@ -61,6 +62,7 @@ body {
       text-align: right;
       font-size: 30px;
     }
+
 #mainTitle h1 {
   margin: 20pt 0;
 }
@@ -84,6 +86,8 @@ body {
     .titleBar {
       background-color: #E7B092;
       color: #40152A;
+      text-align: left;
+      padding: 5px 15px;
     }
 
     #wGrid {
@@ -104,21 +108,69 @@ body {
       flex-direction: column;
     }
 
-@media (max-width: 768px) {
-    #wGrid {
+    .weatherBoxInner {
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      padding: 0 10%;
+      height: 100%;
     }
-    #weatherBox {
-      flex-grow: 1;
-    }
+
+  /* Switch weather boxes to vertical layout on mobile */
+  @media (max-width: 768px) {
+      #wGrid {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10%;
+      }
+      #weatherBox {
+        flex-grow: 1;
+      }
+  }
+
+
+/* Info data field layout */
+.infoLine {
+  flex-grow: 1;
+  flex-direction: column;
 }
 
+/* Vertical Layout for weather data */
+.vertical .infoLine {
+  flex-direction: row;
+  flex-grow: 0;
+  flex-basis: 10%;
+}
 
+/* Styles for when there is no data in a weather box */
 .noData {
   flex-grow: 1;
   justify-content: center;
   display: flex;
   align-items: center;
+}
+
+/* Info value text alignment */
+.textLeft {
+  text-align: left;
+}
+
+/* Flex Layout */
+.flex {
+  display: flex;
+}
+
+.flexHalfLeft {
+  text-align: left;
+  flex-basis: 50%;
+}
+
+.flexHalfRight {
+  justify-content: right;
+  flex-basis: 50%;
+  text-align: right;
+}
+
+.vertical {
+  flex-direction: column;
+  flex-grow: 1;
 }

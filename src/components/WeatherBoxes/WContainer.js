@@ -85,12 +85,15 @@ function WeatherBoxes(props) {
                   minVal={temp[1]}
                   avVal={temp[2]}
                   unit={tempUnit}
+                  orientation="vertical"
                 />
-                <div id="scaleContainer">
-                    <h4>Scale</h4>
-                    <UnitButton text="F" handler={tempHandler} currentUnit={tempUnit} />
-                    <UnitButton text="C" handler={tempHandler} currentUnit={tempUnit} />
-                    <UnitButton text="K" handler={tempHandler} currentUnit={tempUnit} />
+                <div id="scaleContainer" className="flex">
+                    <h4 className="flexHalfLeft">Scale</h4>
+                    <div id="scaleContainerInner" className="flexHalfRight">
+                        <UnitButton text="F" handler={tempHandler} currentUnit={tempUnit} />
+                        <UnitButton text="C" handler={tempHandler} currentUnit={tempUnit} />
+                        <UnitButton text="K" handler={tempHandler} currentUnit={tempUnit} />
+                    </div>
                 </div>
             </WeatherBox>
 
@@ -103,6 +106,7 @@ function WeatherBoxes(props) {
                     minVal={pressure[1]}
                     avVal={pressure[2]}
                     unit="Pa"
+                    orientation="horizontal"
                 />
             </WeatherBox>
 
@@ -115,6 +119,7 @@ function WeatherBoxes(props) {
                         minVal={wind[1]}
                         avVal={wind[2]}   
                         unit={windUnit} 
+                        orientation="horizontal"
                     />
                     <div className="btnContainer">
                         <UnitButton 
