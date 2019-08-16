@@ -70,10 +70,8 @@ function WeatherBoxes(props) {
     /* Update state after every render; every time date gets updated */
     /* Preserve previous units, but with new numbers from new day */
     useEffect(function() {
-        setWindUnit(jsonWind ? "m/s" : "")
-        setWind(jsonWind ? windFuncs["m/s"]() : [null, null, null])
-        setTempUnit(jsonTemp ? "C" : null)
-        setTemp(jsonTemp ? tempFuncs.C() : [null, null, null])
+        setWind(jsonWind ? windFuncs[windUnit]() : "")
+        setTemp(jsonTemp ? tempFuncs[tempUnit]() : [null, null, null])
     });
 
     return (
