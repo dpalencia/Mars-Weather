@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import WeatherBox from "./WeatherBox"
 import InfoValues from "./InfoValues"
 import UnitButton from "../UnitButton"
@@ -24,7 +24,7 @@ function WeatherBoxes(props) {
     let windDirection = props.weatherVals[props.day].WD.most_common 
     ? props.weatherVals[props.day].WD.most_common  : null
 
-
+    // Don't need to manage state for pressure, so we can just make it a regular variable
     let jsonPressure = props.weatherVals[props.day].PRE
     let pressureData = null;
     let pressure = [null, null, null]
@@ -37,7 +37,7 @@ function WeatherBoxes(props) {
         pressure = pressureData.map(num => Math.round(num))
     }
 
-    // Don't need to manage state for pressure, so we can just make it a regular variable
+    
     let jsonTemp = props.weatherVals[props.day].AT
     let tempData, tempFuncs = null
     if(jsonTemp) {
@@ -68,6 +68,13 @@ function WeatherBoxes(props) {
     }
 
 
+    useEffect(function() {
+        setWindUnit(jsonWind ? "m/s" : "")
+        setWind(jsonWind ? windFuncs["m/s"]() : [null, null, null])
+        setTempUnit(jsonTemp ? "C" : null)
+        setTemp(jsonTemp ? tempFuncs.C() : [null, null, null])
+    });
+
     return (
         <div id="wGrid">
             <WeatherBox title="Temperature" gridName="temp" status={jsonTemp}>
@@ -81,11 +88,11 @@ function WeatherBoxes(props) {
                   unit={tempUnit}
                 />
                 <div id="scaleContainer">
-                <h4>Scale</h4>
-                <UnitButton text="F" handler={tempHandler} currentUnit={tempUnit} />
-                <UnitButton text="C" handler={tempHandler} currentUnit={tempUnit} />
-                <UnitButton text="K" handler={tempHandler} currentUnit={tempUnit} />
-            </div>
+                    <h4>Scale</h4>
+                    <UnitButton text="F" handler={tempHandler} currentUnit={tempUnit} />
+                    <UnitButton text="C" handler={tempHandler} currentUnit={tempUnit} />
+                    <UnitButton text="K" handler={tempHandler} currentUnit={tempUnit} />
+                </div>
             </WeatherBox>
 
             <WeatherBox title="Pressure" gridName="pressure" status={jsonPressure}>
@@ -110,16 +117,18 @@ function WeatherBoxes(props) {
                         avVal={wind[2]}   
                         unit={windUnit} 
                     />
-                    <UnitButton 
-                        text="mph" 
-                        handler={windHandler}
-                        currentUnit={windUnit}
-                    />
-                    <UnitButton 
-                        text="m/s" 
-                        handler={windHandler}
-                        currentUnit={windUnit}
-                    /> 
+                    <div className="btnContainer">
+                        <UnitButton 
+                            text="mph" 
+                            handler={windHandler}
+                            currentUnit={windUnit}
+                        />
+                        <UnitButton 
+                            text="m/s" 
+                            handler={windHandler}
+                            currentUnit={windUnit}
+                        /> 
+                    </div>
                     <WindDirection commonDirection={windDirection} />
             </WeatherBox>
 
