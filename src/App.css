@@ -66,6 +66,7 @@ color: #E7B092;
   border: 2px solid #E7B092;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 .unitbtn.selected {
   background: #40152A;

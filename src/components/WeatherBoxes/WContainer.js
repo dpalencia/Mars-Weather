@@ -90,9 +90,23 @@ function WeatherBoxes(props) {
                 <div id="scaleContainer" className="flex">
                     <div className="flexHalfLeft">Scale</div>
                     <div id="scaleContainerInner" className="flexHalfRight">
-                        <UnitButton text="F" handler={tempHandler} currentUnit={tempUnit} />
-                        <UnitButton text="C" handler={tempHandler} currentUnit={tempUnit} />
-                        <UnitButton text="K" handler={tempHandler} currentUnit={tempUnit} />
+                        <UnitButton 
+                            text="°F" 
+                            value="F" 
+                            handler={tempHandler} 
+                            currentUnit={tempUnit} 
+                        />
+                        <UnitButton 
+                            text="°C" 
+                            value="C"
+                            handler={tempHandler} 
+                            currentUnit={tempUnit} />
+                        <UnitButton 
+                            text="°K" 
+                            value="K" 
+                            handler={tempHandler} 
+                            currentUnit={tempUnit} 
+                        />
                     </div>
                 </div>
             </WeatherBox>
@@ -126,11 +140,13 @@ function WeatherBoxes(props) {
                         <div className="btnContainer flexHalfRight">
                             <UnitButton 
                                 text="mph" 
+                                value="mph"
                                 handler={windHandler}
                                 currentUnit={windUnit}
                             />
                             <UnitButton 
-                                text="m/s" 
+                                text="m/s"
+                                value="m/s"
                                 handler={windHandler}
                                 currentUnit={windUnit}
                             /> 

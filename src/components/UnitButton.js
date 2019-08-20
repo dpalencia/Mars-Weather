@@ -5,8 +5,8 @@ function UnitButton(props) {
         return(
             <button 
                 onClick={props.handler} 
-                value={props.text} 
-                className={`unitbtn${props.currentUnit === props.text ? " selected" : ""}`}
+                value={props.value} 
+                className={`unitbtn${props.currentUnit === props.value ? " selected" : ""}`}
             >
                 {props.text}
             </button>
