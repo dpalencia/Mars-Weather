@@ -5,12 +5,10 @@ function MainContainer() {
     const [weatherData, setWeatherData] = useState(null)
     const [currentDay, setCurrentDay] = useState(null);
     const [solArr, setSolArr] = useState([])
-    const [dateObj, setDateObj] = useState(null)
-    
+    let dateObj = currentDay ? new Date(weatherData[currentDay].First_UTC) : ""
     let dateString = dateObj ? `${dateObj.getUTCMonth() + 1}/${dateObj.getUTCDate()}/${dateObj.getUTCFullYear()}` : null
     function dayHandler(e) {
         setCurrentDay(e.target.value)
-        setDateObj(currentDay ? new Date(weatherData[currentDay].First_UTC) : null)
     }
 
     useEffect(function() {
@@ -23,7 +21,6 @@ function MainContainer() {
         .then(function(json) {
             let solKeysLength = json.sol_keys.length
             setCurrentDay(json.sol_keys[solKeysLength - 1])
-            setDateObj(currentDay ? new Date(weatherData[currentDay].First_UTC) : null)
             setSolArr(json.sol_keys.map(sol => <DateBtn date={dateString} value={sol} handler={dayHandler} key={sol} />))
         })
     }, []);
