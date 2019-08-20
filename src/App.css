@@ -34,6 +34,44 @@ body {
   background-repeat: no-repeat;
 }
 
+.altTextColor {
+color: #E7B092;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.unitbtn {
+  border-radius: 50%;
+  border: none;
+  background: #E7B092;
+  box-shadow: none;
+  color: #40152A;
+  font-weight: lighter;
+  font-size: 20px;
+  margin: 0 5px;
+  border: 2px solid #E7B092;
+  width: 40px;
+  height: 40px;
+}
+.unitbtn.selected {
+  background: #40152A;
+  color: #E7B092;
+  border: 2px solid #E7B092;
+}
 
 /***** App */
 .App {
@@ -113,6 +151,7 @@ body {
       display: flex;
       flex-direction: column;
       height: 100%;
+      font-size: 22px;
     }
 
   /* Switch weather boxes to vertical layout on mobile */
@@ -127,12 +166,28 @@ body {
       }
   }
 
+#prevDays {
+  padding: 40px 0;
+}
 
 /* Info data field layout */
+.horizontal .infoLine {
+  text-align: left;
+}
+
 .infoLine {
   flex-grow: 1;
   flex-direction: column;
 }
+
+.infoValues {
+  flex-grow: 1;
+}
+
+  /** Arrow **/
+  .arrowContainer {
+    margin: 0 10px;
+  }
 
 /* Vertical Layout for weather data */
 .vertical .infoLine {
@@ -172,5 +227,8 @@ body {
 
 .vertical {
   flex-direction: column;
-  flex-grow: 1;
+}
+
+.inline {
+  display: inline;
 }

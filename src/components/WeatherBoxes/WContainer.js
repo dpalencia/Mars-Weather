@@ -88,7 +88,7 @@ function WeatherBoxes(props) {
                   orientation="vertical"
                 />
                 <div id="scaleContainer" className="flex">
-                    <h4 className="flexHalfLeft">Scale</h4>
+                    <div className="flexHalfLeft">Scale</div>
                     <div id="scaleContainerInner" className="flexHalfRight">
                         <UnitButton text="F" handler={tempHandler} currentUnit={tempUnit} />
                         <UnitButton text="C" handler={tempHandler} currentUnit={tempUnit} />
@@ -121,19 +121,21 @@ function WeatherBoxes(props) {
                         unit={windUnit} 
                         orientation="horizontal"
                     />
-                    <div className="btnContainer">
-                        <UnitButton 
-                            text="mph" 
-                            handler={windHandler}
-                            currentUnit={windUnit}
-                        />
-                        <UnitButton 
-                            text="m/s" 
-                            handler={windHandler}
-                            currentUnit={windUnit}
-                        /> 
+                    <div className="flex">
+                        <WindDirection commonDirection={windDirection} />
+                        <div className="btnContainer flexHalfRight">
+                            <UnitButton 
+                                text="mph" 
+                                handler={windHandler}
+                                currentUnit={windUnit}
+                            />
+                            <UnitButton 
+                                text="m/s" 
+                                handler={windHandler}
+                                currentUnit={windUnit}
+                            /> 
+                        </div>
                     </div>
-                    <WindDirection commonDirection={windDirection} />
             </WeatherBox>
 
          </div>

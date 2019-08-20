@@ -5,7 +5,7 @@ function MainContainer() {
     const [weatherData, setWeatherData] = useState(null)
     const [currentDay, setCurrentDay] = useState(null);
     const [solArr, setSolArr] = useState([])
-    let dateObj = currentDay ? new Date(weatherData[currentDay].Last_UTC) : null
+    let dateObj = currentDay ? new Date(weatherData[currentDay].First_UTC) : null
 
     function dayHandler(e) {
         setCurrentDay(e.target.value)
@@ -36,6 +36,7 @@ function MainContainer() {
                 `Loading...`
             }
             <div id="prevDays">
+                <h3>Previous Days</h3>
                 {solArr}
             </div>
         </div>
