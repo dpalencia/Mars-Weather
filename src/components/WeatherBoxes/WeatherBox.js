@@ -14,7 +14,7 @@ function NoData() {
 
 function WeatherBox(props) {
     return (
-        <div className="weatherBox" style={{gridArea: props.gridName}}>
+        <div className="weatherBox" id={props.id} style={{gridArea: props.gridName}}>
             <WeatherTitle title={props.title} />
             <div className="weatherBoxInner">
                 {props.status ? props.children : <NoData />}

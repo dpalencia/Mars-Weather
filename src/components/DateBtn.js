@@ -1,11 +1,10 @@
 import React from "react"
 
-
 function DateBtn(props) {
-    console.log(props.value)
+    console.log(props.date)
     return(
         <button value={props.value} onClick={props.handler}>
-            {props.value}
+            {props.date}
         </button>
     )
 }

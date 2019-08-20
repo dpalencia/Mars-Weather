@@ -5,10 +5,12 @@ function MainContainer() {
     const [weatherData, setWeatherData] = useState(null)
     const [currentDay, setCurrentDay] = useState(null);
     const [solArr, setSolArr] = useState([])
-    let dateObj = currentDay ? new Date(weatherData[currentDay].First_UTC) : null
-
+    const [dateObj, setDateObj] = useState(null)
+    
+    let dateString = dateObj ? `${dateObj.getUTCMonth() + 1}/${dateObj.getUTCDate()}/${dateObj.getUTCFullYear()}` : null
     function dayHandler(e) {
         setCurrentDay(e.target.value)
+        setDateObj(currentDay ? new Date(weatherData[currentDay].First_UTC) : null)
     }
 
     useEffect(function() {
@@ -21,14 +23,16 @@ function MainContainer() {
         .then(function(json) {
             let solKeysLength = json.sol_keys.length
             setCurrentDay(json.sol_keys[solKeysLength - 1])
-            setSolArr(json.sol_keys.map(sol => <DateBtn value={sol} handler={dayHandler} key={sol} />))
+            setDateObj(currentDay ? new Date(weatherData[currentDay].First_UTC) : null)
+            setSolArr(json.sol_keys.map(sol => <DateBtn date={dateString} value={sol} handler={dayHandler} key={sol} />))
         })
     }, []);
+
 
     return (
         <div id="mainContainer">
             <div id="mainTitle">
-                <h1>{dateObj ? `${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getFullYear()} - Sol ${currentDay}`
+                <h1>{dateObj ? `${dateString} - Sol ${currentDay}`
                  : "Loading..."}</h1>
             </div>
             {weatherData && currentDay ? 

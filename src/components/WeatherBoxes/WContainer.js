@@ -124,7 +124,7 @@ function WeatherBoxes(props) {
                 />
             </WeatherBox>
 
-            <WeatherBox title="Wind" gridName="weather" status={jsonWind && windDirection}>
+            <WeatherBox id="wind" title="Wind" gridName="weather" status={jsonWind && windDirection}>
                     <InfoValues
                         maxName="Max"
                         minName="Min"
