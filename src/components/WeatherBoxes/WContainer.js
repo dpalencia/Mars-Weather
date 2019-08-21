@@ -135,8 +135,10 @@ function WeatherBoxes(props) {
                         unit={windUnit} 
                         orientation="horizontal"
                     />
-                    <div className="flex">
-                        <WindDirection commonDirection={windDirection} />
+                    <div id="windBottom" className="flex">
+                        <div className={`flexHalfLeft`}>
+                            <WindDirection commonDirection={windDirection} />
+                        </div>
                         <div className="btnContainer flexHalfRight">
                             <UnitButton 
                                 text="mph" 
