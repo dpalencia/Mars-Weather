@@ -84,7 +84,7 @@ function WeatherBoxes(props) {
                   maxVal={temp[0]}
                   minVal={temp[1]}
                   avVal={temp[2]}
-                  unit={tempUnit}
+                  unit={`${tempUnit === "K" ? tempUnit : "°" + tempUnit}`}
                   orientation="vertical"
                 />
                 <div id="scaleContainer" className="flex">
@@ -102,7 +102,7 @@ function WeatherBoxes(props) {
                             handler={tempHandler} 
                             currentUnit={tempUnit} />
                         <UnitButton 
-                            text="°K" 
+                            text="K" 
                             value="K" 
                             handler={tempHandler} 
                             currentUnit={tempUnit} 

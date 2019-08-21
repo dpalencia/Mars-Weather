@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: helvetica;
+  font-family: 'Rubik', sans-serif;
 }
 
 /* Reset headings */
@@ -15,17 +15,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /***** Heading Styles */
 h1 {
-  font-size: 45pt;
-  font-weight: 300;
+  font-size: 30pt;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 30pt;
+  font-size: 25pt;
+  font-weight: 300;
 }
 
-h3 {
-  font-size: 25pt;
-  font-weight: 400;
+h4 {
+  font-size: 20pt;
+  font-weight: 300;
 }
 
 body {
@@ -63,13 +64,13 @@ color: #E7B092;
   font-weight: lighter;
   font-size: 20px;
   margin: 0 5px;
-  border: 2px solid #E7B092;
+
   width: 43px;
   height: 43px;
   padding: 0px;
   cursor: pointer;
 }
-.unitbtn.selected {
+.unitbtn.selected, .dateBtn.selected {
   background: #40152A;
   color: #E7B092;
   border: 2px solid #E7B092;
@@ -77,6 +78,18 @@ color: #E7B092;
 
 #wind .unitbtn {
   font-size: 13px;
+}
+
+
+.dateBtn {
+  background: #E7B092;
+  border: 2px solid #E7B092;
+  color: #40152A;
+  font-size: 22px;
+  font-weight: 300;
+  padding: 20px 40px;
+  margin: 10px;
+  cursor: pointer;
 }
 
 /***** App */
@@ -124,9 +137,13 @@ color: #E7B092;
   flex-direction: column;
 }
 
-    #mainTitle {
-      text-align: center;
-    }
+  #mainTitle {
+    text-align: center;
+    flex-basis: 50pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
     .titleBar {
       background-color: #E7B092;
       color: #40152A;
@@ -136,7 +153,7 @@ color: #E7B092;
 
     #wGrid {
       display: grid;
-      grid-template-rows: 165pt 227pt;
+      grid-template-rows: 110pt 150pt;
       grid-template-columns: 10% 5fr 7fr 10%;
       grid-template-areas:
         ". temp pressure . "

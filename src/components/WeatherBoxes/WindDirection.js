@@ -9,7 +9,7 @@ function WindDirection(props) {
                 </div>
                 <div className="arrowContainer bold altTextColor">
                     <div style={{transform: `rotate(${props.commonDirection.compass_degrees - 90}deg)`}}>
-                        →
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
                     </div>
                 </div>
                 <div className="altTextColor bold">

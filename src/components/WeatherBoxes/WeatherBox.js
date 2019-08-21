@@ -5,7 +5,7 @@ function NoData() {
     return (
         <div className="noData">
             <div>
-                <h3>Missing data!</h3>
+                <h2>Missing data!</h2>
                 <p>Tell NASA to get on it.</p>
             </div>
         </div>
