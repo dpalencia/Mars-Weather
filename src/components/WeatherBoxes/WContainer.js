@@ -76,6 +76,35 @@ function WeatherBoxes(props) {
 
     return (
         <div id="wGrid">
+            <WeatherBox id="wind" title="Wind" gridName="wind" status={jsonWind && windDirection}>
+                    <InfoValues
+                        maxName="Max"
+                        minName="Min"
+                        avName="Average"
+                        maxVal={wind[0]}
+                        minVal={wind[1]}
+                        avVal={wind[2]}   
+                        unit={windUnit} 
+                        orientation="vertical"
+
+                    />
+                    <WindDirection commonDirection={windDirection} />
+                    <div id="windUnits" className="btnContainer ">
+                        <UnitButton 
+                            text="mph" 
+                            value="mph"
+                            handler={windHandler}
+                            currentUnit={windUnit}
+                        />
+                        <UnitButton 
+                            text="m/s"
+                            value="m/s"
+                            handler={windHandler}
+                            currentUnit={windUnit}
+                        /> 
+                    </div>
+
+            </WeatherBox>
             <WeatherBox title="Temperature" gridName="temp" status={jsonTemp}>
                 <InfoValues
                   maxName="High"
@@ -85,10 +114,10 @@ function WeatherBoxes(props) {
                   minVal={temp[1]}
                   avVal={temp[2]}
                   unit={`${tempUnit === "K" ? tempUnit : "°" + tempUnit}`}
-                  orientation="vertical"
+                  orientation="horizontal"
                 />
                 <div id="scaleContainer" className="flex">
-                    <div>Scale</div>
+                    
                     <div id="scaleContainerInner">
                         <UnitButton 
                             text="°F" 
@@ -123,37 +152,6 @@ function WeatherBoxes(props) {
                     orientation="horizontal"
                 />
             </WeatherBox>
-
-            <WeatherBox id="wind" title="Wind" gridName="weather" status={jsonWind && windDirection}>
-                    <InfoValues
-                        maxName="Max"
-                        minName="Min"
-                        avName="Average"
-                        maxVal={wind[0]}
-                        minVal={wind[1]}
-                        avVal={wind[2]}   
-                        unit={windUnit} 
-                        orientation="horizontal"
-                    />
-                    <div id="windBottom" className="flex">
-                        <WindDirection commonDirection={windDirection} />
-                        <div className="btnContainer">
-                            <UnitButton 
-                                text="mph" 
-                                value="mph"
-                                handler={windHandler}
-                                currentUnit={windUnit}
-                            />
-                            <UnitButton 
-                                text="m/s"
-                                value="m/s"
-                                handler={windHandler}
-                                currentUnit={windUnit}
-                            /> 
-                        </div>
-                    </div>
-            </WeatherBox>
-
          </div>
     )
 }

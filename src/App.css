@@ -59,6 +59,41 @@ color: var(--main-color);
 .right {
   text-align: right;
 }
+/* Info value text alignment */
+.textLeft {
+  text-align: left;
+}
+
+/* Flex Layout */
+.flex {
+  display: flex;
+}
+
+.flexHalfLeft {
+  text-align: left;
+  flex-basis: 50%;
+}
+
+.flexHalfRight {
+  justify-content: right;
+  flex-basis: 50%;
+  text-align: right;
+}
+
+
+.vertical {
+  flex-direction: column;
+}
+
+.inline {
+  display: inline;
+}
+
+.flexVertCenter {
+  align-items: center;
+}
+
+
 
 .unitbtn {
   border-radius: 50%;
@@ -67,7 +102,7 @@ color: var(--main-color);
   box-shadow: none;
   color: var(--secondary-color);
   font-weight: lighter;
-  font-size: 20px;
+
   margin: 0 5px;
   width: 43px;
   height: 43px;
@@ -95,10 +130,12 @@ color: var(--main-color);
   cursor: pointer;
 }
 
-#scaleContainerInner {
+#scaleContainerInner, #windUnits {
   text-align: right;
   flex-grow: 1;
 }
+
+
 /*
 @media (max-width: 1200px) {
   #scaleContainer .flexHalfLeft,
@@ -177,8 +214,8 @@ color: var(--main-color);
       grid-template-rows: 110pt 150pt;
       grid-template-columns: 10% 5fr 7fr 10%;
       grid-template-areas:
-        ". temp pressure . "
-        ". temp weather .";
+        ". wind pressure . "
+        ". wind temp .";
       grid-column-gap: 10pt;
       grid-row-gap: 10pt;
       justify-content: center;
@@ -198,17 +235,7 @@ color: var(--main-color);
       font-size: 22px;
     }
 
-  /* Switch weather boxes to vertical layout on mobile */
-  @media (max-width: 767px) {
-      #wGrid {
-        display: flex;
-        flex-direction: column;
-        padding: 0 10%;
-      }
-      #weatherBox {
-        flex-grow: 1;
-      }
-  }
+
 
 #prevDays {
   padding: 40px 0;
@@ -227,6 +254,10 @@ color: var(--main-color);
 
 .infoValues {
   flex-grow: 1;
+}
+
+.vertical.infoValues {
+  flex-grow: 0;
 }
 
   /** Arrow **/
@@ -249,31 +280,38 @@ color: var(--main-color);
   align-items: center;
 }
 
-/* Info value text alignment */
-.textLeft {
-  text-align: left;
+
+
+/** And some media query stuff */
+
+@media (max-width: 1200px) {
+  .unitbtn {
+    width: 35px;
+    height: 35px;
+  }
+
 }
 
-/* Flex Layout */
-.flex {
-  display: flex;
+@media (min-width: 1201px) {
+  .unitBtn {
+    font-size: 20px;
+  }
 }
 
-.flexHalfLeft {
-  text-align: left;
-  flex-basis: 50%;
+@media (max-width: 767px) {
+  .weatherBoxInner, .unitBtn {
+    font-size: 15px;
+  }
 }
 
-.flexHalfRight {
-  justify-content: right;
-  flex-basis: 50%;
-  text-align: right;
-}
-
-.vertical {
-  flex-direction: column;
-}
-
-.inline {
-  display: inline;
+  /* Switch weather boxes to vertical layout on mobile */
+@media (max-width: 479px) {
+  #wGrid {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10%;
+  }
+  #weatherBox {
+    flex-grow: 1;
+  }
 }
