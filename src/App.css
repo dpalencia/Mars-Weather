@@ -95,6 +95,11 @@ color: var(--main-color);
   cursor: pointer;
 }
 
+#scaleContainerInner {
+  text-align: right;
+  flex-grow: 1;
+}
+/*
 @media (max-width: 1200px) {
   #scaleContainer .flexHalfLeft,
   #scaleContainer .flexHalfRight,
@@ -107,7 +112,7 @@ color: var(--main-color);
     flex-wrap: wrap;
   }
 }
-
+*/
 /***** App */
 .App {
   max-width: 1200px;
