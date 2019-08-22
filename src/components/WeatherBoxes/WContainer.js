@@ -103,7 +103,6 @@ function WeatherBoxes(props) {
                             currentUnit={windUnit}
                         /> 
                     </div>
-
             </WeatherBox>
             <WeatherBox title="Temperature" gridName="temp" status={jsonTemp}>
                 <InfoValues
