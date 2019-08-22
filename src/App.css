@@ -192,10 +192,6 @@ color: var(--main-color);
 
   #mainTitle {
     text-align: center;
-    flex-basis: 50pt;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
     .titleBar {
       background-color: var(--main-color);
@@ -277,8 +273,6 @@ color: var(--main-color);
   align-items: center;
 }
 
-
-
 /** And some media query stuff */
 
 @media (max-width: 1200px) {
@@ -294,8 +288,6 @@ color: var(--main-color);
     font-size: 20px;
   }
 }
-
-
 
 @media (max-width: 767px) {
   .weatherBoxInner, .unitBtn {
@@ -333,4 +325,9 @@ color: var(--main-color);
   #windUnits {
     flex-grow: 0;
   }
+}
+
+/* iOS shrinkage fix */
+#titleBar, #mainContainer, #wGrid, .weatherBox {
+  flex-shrink: 0 !important;
 }

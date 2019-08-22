@@ -23,8 +23,10 @@ function MainContainer() {
     return (
         <div id="mainContainer">
             <div id="mainTitle">
-                <h2>{dateObj ? `${dateString}\nSol ${currentDay}`
-                 : "Loading..."}</h2>
+                <div className="mainTitleInner">
+                    <h2>{dateObj ? `${dateString}` : "Loading..."} <br />
+                    {dateObj ? `Sol ${currentDay}` : ""}</h2>
+                </div>
             </div>
             {weatherData && currentDay ? 
                 <WContainer weatherVals={weatherData} day={currentDay} /> : 
