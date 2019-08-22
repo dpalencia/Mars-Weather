@@ -23,8 +23,8 @@ function MainContainer() {
     return (
         <div id="mainContainer">
             <div id="mainTitle">
-                <h1>{dateObj ? `${dateString} - Sol ${currentDay}`
-                 : "Loading..."}</h1>
+                <h2>{dateObj ? `${dateString}\nSol ${currentDay}`
+                 : "Loading..."}</h2>
             </div>
             {weatherData && currentDay ? 
                 <WContainer weatherVals={weatherData} day={currentDay} /> : 
@@ -32,7 +32,6 @@ function MainContainer() {
             }
             <div id="prevDays">
                 <h2>{weatherData ? "Previous Days" : "Loading..."}</h2>
-                <br />
                 {weatherData ? weatherData.sol_keys.map(function(sol, i) {
                     let solDayObj = new Date(weatherData[sol].First_UTC)
                     let solDayString = `${solDayObj.getUTCMonth() + 1}/${solDayObj.getUTCDate()}/${solDayObj.getUTCFullYear()}`
