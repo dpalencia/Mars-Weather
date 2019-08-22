@@ -1,8 +1,3 @@
-https://dpalencia.github.io/Mars-Weather/ <br />
-A React app that tells you what's up with the weather at the Mars Insight lander.
-
-<hr />
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
