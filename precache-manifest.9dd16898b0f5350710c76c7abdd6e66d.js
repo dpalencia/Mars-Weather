@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "17a33dcff6f7cc1affbe1bb4e998196c",
+    "revision": "776e2256fbf23d2f27c313ee23d04046",
     "url": "/Mars-Weather/index.html"
   },
   {
-    "revision": "b18939ea51a64499afc6",
+    "revision": "47f768bab27935ef0cfe",
     "url": "/Mars-Weather/static/css/main.2dd0b012.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Mars-Weather/static/js/2.e0c1cb9b.chunk.js"
   },
   {
-    "revision": "b18939ea51a64499afc6",
-    "url": "/Mars-Weather/static/js/main.71066972.chunk.js"
+    "revision": "47f768bab27935ef0cfe",
+    "url": "/Mars-Weather/static/js/main.5df62f7f.chunk.js"
   },
   {
     "revision": "ff5674fcdc4c12d9bdfc",
