@@ -248,7 +248,7 @@ color: var(--main-color);
 
 /** Arrow **/
 .arrowContainer {
-  margin: 0 10px;
+  margin: 0 0 0 10px;
 }
 
 /* Vertical Layout for weather data */
