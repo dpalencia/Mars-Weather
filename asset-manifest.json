@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Mars-Weather/static/css/main.ec0ba6ed.chunk.css",
-    "main.js": "/Mars-Weather/static/js/main.cfafec36.chunk.js",
-    "main.js.map": "/Mars-Weather/static/js/main.cfafec36.chunk.js.map",
+    "main.css": "/Mars-Weather/static/css/main.2421bc01.chunk.css",
+    "main.js": "/Mars-Weather/static/js/main.b8eabc88.chunk.js",
+    "main.js.map": "/Mars-Weather/static/js/main.b8eabc88.chunk.js.map",
     "runtime~main.js": "/Mars-Weather/static/js/runtime~main.0d27c969.js",
     "runtime~main.js.map": "/Mars-Weather/static/js/runtime~main.0d27c969.js.map",
     "static/js/2.e0c1cb9b.chunk.js": "/Mars-Weather/static/js/2.e0c1cb9b.chunk.js",
     "static/js/2.e0c1cb9b.chunk.js.map": "/Mars-Weather/static/js/2.e0c1cb9b.chunk.js.map",
     "index.html": "/Mars-Weather/index.html",
-    "precache-manifest.88a5b4dcb025f1fa432da26a5d595414.js": "/Mars-Weather/precache-manifest.88a5b4dcb025f1fa432da26a5d595414.js",
+    "precache-manifest.b70096fa19af8b000ccb2e445410e732.js": "/Mars-Weather/precache-manifest.b70096fa19af8b000ccb2e445410e732.js",
     "service-worker.js": "/Mars-Weather/service-worker.js",
-    "static/css/main.ec0ba6ed.chunk.css.map": "/Mars-Weather/static/css/main.ec0ba6ed.chunk.css.map",
+    "static/css/main.2421bc01.chunk.css.map": "/Mars-Weather/static/css/main.2421bc01.chunk.css.map",
     "static/media/App.css": "/Mars-Weather/static/media/bg.f0f41448.png"
   }
 }
