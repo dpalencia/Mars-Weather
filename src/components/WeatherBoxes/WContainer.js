@@ -14,8 +14,8 @@ function WeatherBoxes(props) {
             jsonWind.av
         ]
         windFuncs = {
-            mph: () => windData.map((num) => Math.round(num * 2.237)),
-            ["m/s"]: () => windData.map(num => Math.round(num)) // Miles/hour -> Meters/second conversion
+            mph: () => windData.map((num) => (num * 2.237).toFixed(1)),
+            ["m/s"]: () => windData.map(num => num.toFixed(1)) // Miles/hour -> Meters/second conversion
         }
     }
     const [windUnit, setWindUnit] = useState(jsonWind ? "m/s" : "")
@@ -34,7 +34,7 @@ function WeatherBoxes(props) {
             jsonPressure.mn,
             jsonPressure.av
         ]
-        pressure = pressureData.map(num => Math.round(num))
+        pressure = pressureData.map(num => num.toFixed(1))
     }
 
     
@@ -47,9 +47,9 @@ function WeatherBoxes(props) {
             jsonTemp.av
         ]
         tempFuncs = {
-            C: () => tempData.map((num) => Math.round(num)),
-            F: () => tempData.map((num) => Math.round(num * 1.8 + 32)), // C -> F conversion 
-            K: () => tempData.map((num) => Math.round(num + 273.15)) // C -> K conversion
+            C: () => tempData.map((num) => num.toFixed(1)),
+            F: () => tempData.map((num) => (num * 1.8 + 32).toFixed(1)), // C -> F conversion 
+            K: () => tempData.map((num) => (num + 273.15).toFixed(1)) // C -> K conversion
         }
     }
     const [temp, setTemp] = useState(jsonTemp ? tempFuncs.C() : [null, null, null])
